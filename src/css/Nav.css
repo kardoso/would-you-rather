@@ -52,5 +52,6 @@
 }
 
 .header-user-info img {
-  padding: 0px 16px;
+  margin: 25px;
+  border-radius: 120px;
 }
