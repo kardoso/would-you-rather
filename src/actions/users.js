@@ -17,10 +17,10 @@ export function addUserQuestion(authedUser, qid) {
   }
 }
 
-export function saveUserAnswer(auth, qid, option) {
+export function saveUserAnswer(authedUser, qid, option) {
   return {
     type: SAVE_USER_ANSWER,
-    auth,
+    authedUser,
     qid,
     option,
   }
