@@ -1,0 +1,136 @@
+.question-container {
+  width: 100%;
+  max-width: 720px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 16px -2px;
+  border: 1px solid #ddd;
+}
+
+.container-header {
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.container-header p {
+  padding: 16px 24px;
+}
+
+.container-content {
+  width: 100%;
+  display: flex;
+  padding: 32px 0px;
+}
+
+.container-content img {
+  width: 128px;
+  border-radius: 120px;
+}
+
+.container-content .photo,
+.container-content .details {
+  padding: 0px 45px;
+}
+
+.container-content .photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-content .details {
+  width: 100%;
+}
+
+.submit-button {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 0px;
+  margin: 8px 0px 0px;
+  background-color: #42ff00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background: #42cf00;
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+.details form,
+.details .results {
+  display: flex;
+  flex-direction: column;
+}
+
+.details .results {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-results {
+  margin: 8px 0px;
+  padding: 8px 0px;
+  background-color: #ddd;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.percentage {
+  width: 80%;
+  height: 32px;
+  align-self: center;
+  background-color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.percentage-bar {
+  display: inline-block;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+.bar-filler {
+  display: inline-block;
+  background-color: #42cf00;
+  height: 100%;
+}
+
+.percentage p {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  line-height: 32px;
+  font-weight: bold;
+}
+
+.option-results p {
+  text-align: center;
+}
+
+.option-text, .votes-text {
+  width: 80%;
+  margin: 12px 0px;
+  font-weight: bold;
+  align-self: center;
+
+}
+
+.option-text {
+  text-align: left !important;
+}
