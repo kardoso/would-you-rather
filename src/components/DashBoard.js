@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Question from './Question'
+import '../css/DashBoard.css'
 
 class DashBoard extends Component {
   render() {
     const { questionIds } = this.props
-    console.log(questionIds)
     return (
-      <div>
-        <ul>
+      <div className="dashboard">
+        <ul className="questions-list">
           {questionIds === null
             ? null
-            : questionIds.map((id) => <li key={id}>{id}</li>)}
+            : questionIds.map((id) => (
+                <li key={id} className="questions-list-item">
+                  <Question id={id} />
+                </li>
+              ))}
         </ul>
       </div>
     )
