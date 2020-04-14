@@ -34,8 +34,14 @@ class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo, toHome } = this.state
 
+    const { authedUser, loading } = this.props
+
     if (toHome) {
       return <Redirect to="/" />
+    }
+
+    if (!authedUser && !loading) {
+      return <Redirect to="/login" />
     }
 
     return (
@@ -76,4 +82,8 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion)
+function mapStateToProps({ authedUser, loading }) {
+  return { authedUser, loading }
+}
+
+export default connect(mapStateToProps)(NewQuestion)
