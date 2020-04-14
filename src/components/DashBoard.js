@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { Redirect } from 'react-router-dom'
 import '../css/DashBoard.css'
 
 class DashBoard extends Component {
@@ -15,6 +16,7 @@ class DashBoard extends Component {
   }
 
   render() {
+    const { hasQuestions } = this.props
     const questionIds = this.state.showAnswered
       ? this.props.answeredQuestions
       : this.props.unansweredQuestions
@@ -42,37 +44,48 @@ class DashBoard extends Component {
             Answered questions
           </button>
         </div>
-        <ul className="questions-list">
-          {questionIds === null
-            ? null
-            : questionIds.map((id) => (
-                <li key={id} className="questions-list-item">
-                  <Question id={id} />
-                </li>
-              ))}
-        </ul>
+
+        {hasQuestions ? (
+          <ul className="questions-list">
+            {questionIds === null
+              ? null
+              : questionIds.map((id) => (
+                  <li key={id} className="questions-list-item">
+                    <Question id={id} />
+                  </li>
+                ))}
+          </ul>
+        ) : (
+          <Redirect to="/login"></Redirect>
+        )}
       </div>
     )
   }
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
-  const questionIds = Object.keys(questions).sort(
-    (a, b) => questions[b].timestamp - questions[a].timestamp
-  )
+  if (authedUser) {
+    const questionIds = Object.keys(questions).sort(
+      (a, b) => questions[b].timestamp - questions[a].timestamp
+    )
 
-  const unansweredQuestions = questionIds.filter(
-    (id) => !users[authedUser].answers.hasOwnProperty(id)
-  )
-  const answeredQuestions = questionIds.filter((id) =>
-    users[authedUser].answers.hasOwnProperty(id)
-  )
+    const unansweredQuestions = questionIds.filter(
+      (id) => !users[authedUser].answers.hasOwnProperty(id)
+    )
+    const answeredQuestions = questionIds.filter((id) =>
+      users[authedUser].answers.hasOwnProperty(id)
+    )
 
-  // TODO: CREATE TABS TO ANSWERED AND UNANSWERED QUESTIONS
+    // TODO: CREATE TABS TO ANSWERED AND UNANSWERED QUESTIONS
 
+    return {
+      hasQuestions: true,
+      answeredQuestions,
+      unansweredQuestions,
+    }
+  }
   return {
-    answeredQuestions,
-    unansweredQuestions,
+    hasQuestions: false,
   }
 }
 
