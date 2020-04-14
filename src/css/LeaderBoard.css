@@ -1,0 +1,17 @@
+.leader-board-container {
+  width: 100%;
+}
+
+.users-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.users-list-item {
+  width: 100%;
+  max-width: 720px;
+}

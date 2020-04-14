@@ -6,6 +6,7 @@ import '../css/App.css'
 import Nav from './Nav'
 import DashBoard from './DashBoard'
 import NewQuestion from './NewQuestion'
+import LeaderBoard from './LeaderBoard'
 import { setAuthedUser } from '../actions/authedUser'
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <div>
             <Route path="/" exact component={DashBoard} />
             <Route path="/new" component={NewQuestion} />
+            <Route path="/rank" component={LeaderBoard} />
           </div>
         </div>
       </Router>
