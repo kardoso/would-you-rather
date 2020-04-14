@@ -1,0 +1,94 @@
+.new-question {
+  padding: 32px 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-question-container {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 16px -2px;
+  border: 1px solid #ddd;
+}
+
+.new-question-container-header {
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.new-question-container-header p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 16px 24px;
+}
+
+.new-question-container-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0px;
+}
+
+.new-question-container-content > p {
+  margin-bottom: 32px;
+  font-weight: bold;
+
+}
+
+.new-question-container-content form {
+  margin: 16px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-question-container-content form>* {
+  margin: 6px 0px;
+}
+
+.new-question-container-content form>p {
+  margin: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.new-question-container-content form > input {
+  padding: 8px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.new-question-container-content form>input:focus {
+  background-color: #f7f7f7;
+}
+
+.new-question-container-content .submit-button {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 0px;
+  margin: 8px 0px 0px;
+  background-color: #42ff00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.new-question-container-content .submit-button:hover {
+  background: #42cf00;
+}
+
+.new-question-container-content .submit-button:disabled {
+  background: #ccc;
+  cursor: default;
+}

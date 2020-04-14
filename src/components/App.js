@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared'
 import '../css/App.css'
 import Nav from './Nav'
 import DashBoard from './DashBoard'
+import NewQuestion from './NewQuestion'
 import { setAuthedUser } from '../actions/authedUser'
 
 class App extends Component {
@@ -15,10 +16,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <Nav />
           <div>
             <Route path="/" exact component={DashBoard} />
+            <Route path="/new" component={NewQuestion} />
           </div>
         </div>
       </Router>
