@@ -1,5 +1,45 @@
 .dashboard {
   width: 100%;
+  margin: 32px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-choicer {
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-choicer button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px 0px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  margin: 0px 2px;
+  outline: none;
+}
+
+.dashboard-choicer .activated-button {
+color: #fff;
+  background-color: #ddd;
+}
+
+.dashboard-choicer .deactivated-button {
+  color: #000;
+  background-color: #fff;
+}
+
+.dashboard-choicer button:hover {
+  background-color: #b4ddb6;
 }
 
 .questions-list {
