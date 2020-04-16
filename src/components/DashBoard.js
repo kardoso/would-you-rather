@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import { Redirect } from 'react-router-dom'
 import '../css/DashBoard.css'
 
 class DashBoard extends Component {
@@ -13,7 +12,6 @@ class DashBoard extends Component {
     this.setState(() => ({
       showAnswered,
     }))
-    this.forceUpdate()
   }
 
   render() {
@@ -29,6 +27,7 @@ class DashBoard extends Component {
     const currentQuestionIds = this.state.showAnswered
       ? answeredQuestions
       : unansweredQuestions
+
     return (
       <div className="dashboard">
         <div className="dashboard-choicer">
@@ -54,19 +53,15 @@ class DashBoard extends Component {
           </button>
         </div>
 
-        {authedUser ? (
-          <ul className="questions-list">
-            {currentQuestionIds === null
-              ? null
-              : currentQuestionIds.map((id) => (
-                  <li key={id} className="questions-list-item">
-                    <Question id={id} />
-                  </li>
-                ))}
-          </ul>
-        ) : (
-          <Redirect to="/login"></Redirect>
-        )}
+        <ul className="questions-list">
+          {currentQuestionIds === null
+            ? null
+            : currentQuestionIds.map((id) => (
+                <li key={id} className="questions-list-item">
+                  <Question id={id} />
+                </li>
+              ))}
+        </ul>
       </div>
     )
   }

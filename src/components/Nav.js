@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { unsetAuthedUser } from '../actions/authedUser'
 import '../css/Nav.css'
 
@@ -9,6 +9,8 @@ class Nav extends Component {
     const { dispatch } = this.props
 
     dispatch(unsetAuthedUser())
+
+    this.props.history.push(`/login`)
   }
 
   render() {
@@ -19,15 +21,15 @@ class Nav extends Component {
           <ul>
             <li>
               {/*TODO: Link to Home*/}
-              <NavLink to="/">Home</NavLink>
+              <Link to={authedUser ? '/' : '/login'}>Home</Link>
             </li>
             <li>
               {/*TODO: Link to add a new question*/}
-              <NavLink to="/new">New Question</NavLink>
+              <Link to={authedUser ? '/new' : '/login'}>New Question</Link>
             </li>
             <li>
               {/*TODO: Link to leader board*/}
-              <NavLink to="/rank">Leader Board</NavLink>
+              <Link to={authedUser ? '/rank' : '/login'}>Leader Board</Link>
             </li>
           </ul>
           {authedUser === null ? null : (
@@ -41,9 +43,7 @@ class Nav extends Component {
               </div>
               <div>
                 {/*TODO: Logout user*/}
-                <NavLink to="/login" onClick={this.handleLogout}>
-                  Logout
-                </NavLink>
+                <Link to='/login' onClick={this.handleLogout}>Logout</Link>
               </div>
             </div>
           )}
@@ -60,4 +60,4 @@ function mapStateToProps({ authedUser, users }) {
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))

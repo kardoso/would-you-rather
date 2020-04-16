@@ -34,14 +34,8 @@ class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo, toHome } = this.state
 
-    const { authedUser, loading } = this.props
-
     if (toHome) {
       return <Redirect to="/" />
-    }
-
-    if (!authedUser && !loading) {
-      return <Redirect to="/login" />
     }
 
     return (

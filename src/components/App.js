@@ -9,6 +9,7 @@ import DashBoard from './DashBoard'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
+import Login from './Login'
 import { setAuthedUser } from '../actions/authedUser'
 
 class App extends Component {
@@ -23,7 +24,9 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
-            {this.props.loading === true ? null : (
+            {this.props.loading === true ? (
+              <Route path="/login" component={Login} />
+            ) : (
               <div>
                 <Route path="/" exact component={DashBoard} />
                 <Route path="/new" component={NewQuestion} />
