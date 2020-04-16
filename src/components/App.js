@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
@@ -10,12 +10,10 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
 import Login from './Login'
-import { setAuthedUser } from '../actions/authedUser'
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
-    this.props.dispatch(setAuthedUser('sarahedo'))
   }
   render() {
     return (
@@ -24,8 +22,9 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
+            <Route path="/login" component={Login} />
             {this.props.loading === true ? (
-              <Route path="/login" component={Login} />
+              <Redirect to="/login" />
             ) : (
               <div>
                 <Route path="/" exact component={DashBoard} />
