@@ -34,7 +34,10 @@ class Nav extends Component {
             <div className="header-user">
               <div className="header-user-info">
                 <p>Hello, {user ? user.name : 'user'}</p>
-                <img src={user ? user.avatarURL : ''} alt="User" />
+                <img
+                  src={user ? process.env.PUBLIC_URL + user.avatarURL : ''}
+                  alt="User"
+                />
               </div>
               <div>
                 {/*TODO: Logout user*/}

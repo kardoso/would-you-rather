@@ -13,13 +13,22 @@ class DashBoard extends Component {
     this.setState(() => ({
       showAnswered,
     }))
+    this.forceUpdate()
   }
 
   render() {
-    const { hasQuestions } = this.props
-    const questionIds = this.state.showAnswered
-      ? this.props.answeredQuestions
-      : this.props.unansweredQuestions
+    const { questionIds, users, authedUser } = this.props
+
+    const unansweredQuestions = questionIds.filter(
+      (id) => !users[authedUser].answers.hasOwnProperty(id)
+    )
+    const answeredQuestions = questionIds.filter((id) =>
+      users[authedUser].answers.hasOwnProperty(id)
+    )
+
+    const currentQuestionIds = this.state.showAnswered
+      ? answeredQuestions
+      : unansweredQuestions
     return (
       <div className="dashboard">
         <div className="dashboard-choicer">
@@ -45,11 +54,11 @@ class DashBoard extends Component {
           </button>
         </div>
 
-        {hasQuestions ? (
+        {authedUser ? (
           <ul className="questions-list">
-            {questionIds === null
+            {currentQuestionIds === null
               ? null
-              : questionIds.map((id) => (
+              : currentQuestionIds.map((id) => (
                   <li key={id} className="questions-list-item">
                     <Question id={id} />
                   </li>
@@ -64,28 +73,14 @@ class DashBoard extends Component {
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
-  if (authedUser) {
-    const questionIds = Object.keys(questions).sort(
-      (a, b) => questions[b].timestamp - questions[a].timestamp
-    )
+  const questionIds = Object.keys(questions).sort(
+    (a, b) => questions[b].timestamp - questions[a].timestamp
+  )
 
-    const unansweredQuestions = questionIds.filter(
-      (id) => !users[authedUser].answers.hasOwnProperty(id)
-    )
-    const answeredQuestions = questionIds.filter((id) =>
-      users[authedUser].answers.hasOwnProperty(id)
-    )
-
-    // TODO: CREATE TABS TO ANSWERED AND UNANSWERED QUESTIONS
-
-    return {
-      hasQuestions: true,
-      answeredQuestions,
-      unansweredQuestions,
-    }
-  }
   return {
-    hasQuestions: false,
+    authedUser,
+    questionIds,
+    users,
   }
 }
 
