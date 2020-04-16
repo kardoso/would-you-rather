@@ -15,7 +15,7 @@ class Question extends Component {
   }
 
   toQuestion = (id) => {
-    this.props.history.push(`/question/${id}`)
+    this.props.history.push(`/questions/${id}`)
   }
 
   render() {
