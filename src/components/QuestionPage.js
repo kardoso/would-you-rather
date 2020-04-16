@@ -63,7 +63,7 @@ class QuestionPoll extends Component {
               <div className="details">
                 <h2>Would you rather...</h2>
                 <form onSubmit={this.handleSubmitAnswer}>
-                  <div>
+                  <div className="option">
                     <input
                       type="radio"
                       id={`optionOne${questionId}`}
@@ -76,7 +76,7 @@ class QuestionPoll extends Component {
                       {optionOne.text}
                     </label>
                   </div>
-                  <div>
+                  <div className="option">
                     <input
                       type="radio"
                       id={`optionTwo${questionId}`}

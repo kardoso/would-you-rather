@@ -41,8 +41,11 @@ class Question extends Component {
             <h2>Would you rather...</h2>
 
             <div>
-              <p>{optionOne.text} OR ...</p>
-              <button onClick={() => this.toQuestion(questionId)}>
+              <p className="option">{optionOne.text} OR ...</p>
+              <button
+                className="submit-button"
+                onClick={() => this.toQuestion(questionId)}
+              >
                 View Poll
               </button>
             </div>

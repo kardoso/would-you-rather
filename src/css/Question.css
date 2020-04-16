@@ -83,6 +83,10 @@
   flex-direction: column;
 }
 
+.option {
+  padding: 8px 0px;
+}
+
 .option-results {
   margin: 8px 0px;
   padding: 8px 0px;
@@ -128,7 +132,8 @@
   text-align: center;
 }
 
-.option-text, .votes-text {
+.option-text,
+.votes-text {
   width: 80%;
   margin: 12px 0px;
   font-weight: bold;
